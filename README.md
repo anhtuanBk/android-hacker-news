@@ -1,6 +1,4 @@
-#android-hackernew
-Hacker News
-
+#Hacker News
 ```
 Sample application for android boilerplate.
 ```
