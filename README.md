@@ -1,8 +1,8 @@
-# android-boilerplate
-Innovatube Android App Boilerplate
+#android-hackernew
+Hacker News
 
 ```
-Code base for every Innovatube's android projects
+Sample application for android boilerplate.
 ```
 
 * [Project and code style guidelines](project_and_code_guidelines.md)
