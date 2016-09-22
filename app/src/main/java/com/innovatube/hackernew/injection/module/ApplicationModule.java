@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.innovatube.hackernew.data.local.RealmHelper;
-import com.innovatube.hackernew.data.remote.InnovatubeService;
+import com.innovatube.hackernew.data.remote.HackerNewsService;
 import com.innovatube.hackernew.injection.ApplicationContext;
 
 import javax.inject.Singleton;
@@ -39,8 +39,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    InnovatubeService provideInnovatubeService(Retrofit retrofit) {
-        return retrofit.create(InnovatubeService.class);
+    HackerNewsService provideInnovatubeService(Retrofit retrofit) {
+        return retrofit.create(HackerNewsService.class);
     }
 
     @Provides
@@ -51,7 +51,7 @@ public class ApplicationModule {
     @Provides
     @Singleton
     Retrofit provideRetrofitInstance() {
-        return InnovatubeService.Creator.newRetrofitInstance();
+        return HackerNewsService.Creator.newRetrofitInstance();
     }
 
     @Provides

@@ -2,14 +2,19 @@ package com.innovatube.hackernew.data;
 
 import com.innovatube.hackernew.data.local.PreferenceHelper;
 import com.innovatube.hackernew.data.local.RealmHelper;
+import com.innovatube.hackernew.data.model.Story;
 import com.innovatube.hackernew.data.model.UserId;
 import com.innovatube.hackernew.data.prefs.UserPrefs;
-import com.innovatube.hackernew.data.remote.InnovatubeService;
+import com.innovatube.hackernew.data.remote.HackerNewsService;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.RealmResults;
 import rx.Observable;
 
 /**
@@ -18,13 +23,13 @@ import rx.Observable;
 
 @Singleton
 public class DataManager {
-    private final InnovatubeService innovatubeService;
+    private final HackerNewsService hackerNewsService;
     private final PreferenceHelper preferenceHelper;
     private final RealmHelper realmHelper;
 
     @Inject
-    public DataManager(InnovatubeService inploiService, PreferenceHelper preferenceHelper, RealmHelper realmHelper) {
-        this.innovatubeService = inploiService;
+    public DataManager(HackerNewsService inploiService, PreferenceHelper preferenceHelper, RealmHelper realmHelper) {
+        this.hackerNewsService = inploiService;
         this.preferenceHelper = preferenceHelper;
         this.realmHelper = realmHelper;
     }
@@ -73,10 +78,46 @@ public class DataManager {
                                             String confirmPassword,
                                             String dob,
                                             String promotionCode) {
-        return innovatubeService.createJobSeekerAccount(firstName, lastName, emailAddress, password, confirmPassword, dob, promotionCode);
+//        return hackerNewsService.createJobSeekerAccount(firstName, lastName, emailAddress, password, confirmPassword, dob, promotionCode);
+        return null;
     }
 
     public void saveUserInfo(UserId userId, Realm realm) {
         realmHelper.saveUserInfo(userId, realm);
     }
+
+    public Observable<List<Integer>> getTopStoriesFromRemote() {
+        return hackerNewsService.getTopStories();
+    }
+
+    public Observable<List<Integer>> getNewStoriesFromRemote() {
+        return hackerNewsService.getNewStories();
+    }
+
+    public void saveStories(Realm realm, List<Story> stories) {
+        realmHelper.saveStories(realm, stories);
+    }
+
+    public Observable<RealmResults<Story>> fetchTopStories(Realm realm) {
+        return realmHelper.getTopStories(realm);
+
+    }
+
+    public Observable<RealmResults<Story>> fetchNewStories(Realm realm) {
+        return realmHelper.getNewStories(realm);
+
+    }
+
+    public Observable<Story> getStoryDetailFromRemote(int storyId) {
+        return hackerNewsService.getStoryDetail(storyId);
+    }
+
+    public void saveStory(Realm realm, Story story) {
+        realmHelper.saveStory(realm, story);
+    }
+
+    public Observable<RealmObject> fetchStory(Realm realm, int storyId) {
+        return realmHelper.getStory(realm, storyId);
+    }
+
 }

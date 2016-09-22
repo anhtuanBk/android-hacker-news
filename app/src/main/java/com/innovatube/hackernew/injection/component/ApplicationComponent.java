@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.innovatube.hackernew.data.DataManager;
-import com.innovatube.hackernew.data.remote.InnovatubeService;
+import com.innovatube.hackernew.data.remote.HackerNewsService;
 import com.innovatube.hackernew.injection.ApplicationContext;
 import com.innovatube.hackernew.injection.module.ApplicationModule;
 
@@ -29,7 +29,7 @@ public interface ApplicationComponent {
 
     Retrofit retrofit();
 
-    InnovatubeService inploiService();
+    HackerNewsService inploiService();
 
     DataManager dataManager();
 
