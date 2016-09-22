@@ -86,11 +86,11 @@ public class DataManager {
         realmHelper.saveUserInfo(userId, realm);
     }
 
-    public Observable<List<Integer>> getTopStoriesFromRemote() {
+    public Observable<List<Long>> getTopStoriesFromRemote() {
         return hackerNewsService.getTopStories();
     }
 
-    public Observable<List<Integer>> getNewStoriesFromRemote() {
+    public Observable<List<Long>> getNewStoriesFromRemote() {
         return hackerNewsService.getNewStories();
     }
 
@@ -108,7 +108,7 @@ public class DataManager {
 
     }
 
-    public Observable<Story> getStoryDetailFromRemote(int storyId) {
+    public Observable<Story> getStoryDetailFromRemote(long storyId) {
         return hackerNewsService.getStoryDetail(storyId);
     }
 
@@ -116,7 +116,7 @@ public class DataManager {
         realmHelper.saveStory(realm, story);
     }
 
-    public Observable<RealmObject> fetchStory(Realm realm, int storyId) {
+    public Observable<RealmObject> fetchStory(Realm realm, long storyId) {
         return realmHelper.getStory(realm, storyId);
     }
 

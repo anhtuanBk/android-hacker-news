@@ -15,7 +15,7 @@ public class Story extends RealmObject {
     @PrimaryKey
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Long id;
 
     @SerializedName("score")
     @Expose
@@ -52,7 +52,7 @@ public class Story extends RealmObject {
      * @return
      * The id
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -61,7 +61,7 @@ public class Story extends RealmObject {
      * @param id
      * The id
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

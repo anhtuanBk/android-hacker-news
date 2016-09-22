@@ -36,13 +36,13 @@ public interface HackerNewsService {
 //                                              @Field("promo") String promotionCode);
 
     @GET("topstories.json")
-    Observable<List<Integer>> getTopStories();
+    Observable<List<Long>> getTopStories();
 
     @GET("newstories.json")
-    Observable<List<Integer>> getNewStories();
+    Observable<List<Long>> getNewStories();
 
-    @GET("item/{id}.json")
-    Observable<Story> getStoryDetail(@Path("id")int storyId);
+    @GET("item/{storyId}.json")
+    Observable<Story> getStoryDetail(@Path("storyId") long storyId);
 
 
 

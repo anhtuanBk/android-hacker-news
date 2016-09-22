@@ -51,7 +51,7 @@ public class RealmHelper {
         });
     }
 
-    public Observable<RealmObject> getStory(final Realm realm, int storyId) {
+    public Observable<RealmObject> getStory(final Realm realm, long storyId) {
         return realm.where(Story.class).equalTo("id", storyId).findFirst()
                 .asObservable()
                 .filter(new Func1<RealmObject, Boolean>() {
